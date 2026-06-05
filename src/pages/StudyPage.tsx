@@ -66,6 +66,7 @@ const StudyPage = () => {
   const handleDifficulty = (difficulty: "easy" | "medium" | "hard") => {
     if (deck && card) {
       updateCardDifficulty(deck.id, card.id, difficulty);
+      reviewedRef.current.add(card.id);
     }
     next();
   };
