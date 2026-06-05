@@ -41,11 +41,8 @@ const Navbar = () => {
                 <div className="flex flex-col gap-3">
                   <a href="#features" className="text-sm text-muted-foreground py-2">Features</a>
                   <a href="#how-it-works" className="text-sm text-muted-foreground py-2">How It Works</a>
-                  <Button variant="ghost" size="sm" asChild>
-                    <Link to="/auth">Sign In</Link>
-                  </Button>
                   <Button variant="hero" size="sm" asChild>
-                    <Link to="/auth?mode=signup">Get Started</Link>
+                    <Link to="/dashboard">Open App</Link>
                   </Button>
                 </div>
               </div>
