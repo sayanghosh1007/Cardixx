@@ -11,18 +11,18 @@ import {
   Target,
   ArrowRight,
 } from "lucide-react";
-import { getDecks } from "@/lib/deckStore";
+import { getDecks, getStats, formatDuration } from "@/lib/deckStore";
 
 const DashboardPage = () => {
   const decks = getDecks();
-  const totalCards = decks.reduce((s, d) => s + d.cards.length, 0);
-  const avgMastery = decks.length > 0 ? Math.round(decks.reduce((s, d) => s + d.mastery, 0) / decks.length) : 0;
+  const stats = getStats();
+  const weekMs = stats.week.reduce((s, d) => s + d.ms, 0);
 
-  const stats = [
-    { label: "Total Cards", value: String(totalCards), icon: BookOpen, change: `${decks.length} decks` },
-    { label: "Avg Mastery", value: `${avgMastery}%`, icon: Brain, change: "Across all decks" },
-    { label: "Study Streak", value: "0 days", icon: Flame, change: "Start studying!" },
-    { label: "Study Time", value: "0h", icon: Clock, change: "This week" },
+  const statCards = [
+    { label: "Total Cards", value: String(stats.totalCards), icon: BookOpen, change: `${stats.totalDecks} decks` },
+    { label: "Avg Mastery", value: `${stats.avgMastery}%`, icon: Brain, change: "Across all decks" },
+    { label: "Study Streak", value: `${stats.streak} day${stats.streak === 1 ? "" : "s"}`, icon: Flame, change: stats.streak === 0 ? "Start studying!" : "Keep it up!" },
+    { label: "Study Time", value: formatDuration(weekMs), icon: Clock, change: "This week" },
   ];
 
   const quickActions = [
@@ -54,7 +54,7 @@ const DashboardPage = () => {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {stats.map((s) => (
+          {statCards.map((s) => (
             <div key={s.label} className="glass-card-hover p-5">
               <div className="flex items-center gap-2 mb-3">
                 <s.icon size={16} className="text-primary" />
@@ -76,7 +76,7 @@ const DashboardPage = () => {
               <p className="text-sm text-muted-foreground">
                 {decks.length === 0
                   ? "Get started by generating your first flashcard deck! Choose a topic or paste your notes."
-                  : `You have ${totalCards} cards across ${decks.length} decks. ${avgMastery < 50 ? "Focus on reviewing your existing cards to improve mastery." : "Great progress! Keep reviewing to maintain your knowledge."}`}
+                  : `You have ${stats.totalCards} cards across ${stats.totalDecks} decks. ${stats.avgMastery < 50 ? "Focus on reviewing your existing cards to improve mastery." : "Great progress! Keep reviewing to maintain your knowledge."}`}
               </p>
             </div>
             <Button variant="neon" size="sm" asChild>

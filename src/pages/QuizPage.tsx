@@ -4,7 +4,7 @@ import DashboardLayout from "@/components/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Brain, CheckCircle2, XCircle, ArrowRight, Clock, BookOpen, ChevronRight } from "lucide-react";
-import { getDeck, getDecks, type Flashcard } from "@/lib/deckStore";
+import { getDeck, getDecks, logQuizResult, type Flashcard } from "@/lib/deckStore";
 
 function generateQuizQuestions(cards: Flashcard[]) {
   return cards.slice(0, 10).map((card) => {
@@ -121,6 +121,16 @@ const QuizPage = () => {
     if (current < questions.length - 1) {
       setCurrent(current + 1);
     } else {
+      const finalScore = newAnswers.filter((a, i) => a === questions[i].correct).length;
+      if (deck) {
+        logQuizResult({
+          deckId: deck.id,
+          deckName: deck.name,
+          total: questions.length,
+          correct: finalScore,
+          takenAt: new Date().toISOString(),
+        });
+      }
       setShowResults(true);
     }
   };

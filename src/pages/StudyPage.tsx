@@ -1,10 +1,9 @@
-import { useState, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, RotateCcw, Shuffle, ThumbsDown, Minus, ThumbsUp, BookOpen } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { getDeck, getDecks, updateCardDifficulty } from "@/lib/deckStore";
+import { getDeck, getDecks, updateCardDifficulty, logSession } from "@/lib/deckStore";
 
 const StudyPage = () => {
   const [searchParams] = useSearchParams();
@@ -20,6 +19,28 @@ const StudyPage = () => {
   const cards = deck?.cards || [];
   const indices = shuffledIndices || cards.map((_, i) => i);
   const card = cards[indices[currentIndex]];
+
+  const startRef = useRef<number>(Date.now());
+  const reviewedRef = useRef<Set<string>>(new Set());
+
+  useEffect(() => {
+    startRef.current = Date.now();
+    reviewedRef.current = new Set();
+    return () => {
+      if (deck && reviewedRef.current.size > 0) {
+        const now = Date.now();
+        logSession({
+          deckId: deck.id,
+          deckName: deck.name,
+          cardsReviewed: reviewedRef.current.size,
+          durationMs: now - startRef.current,
+          startedAt: new Date(startRef.current).toISOString(),
+          endedAt: new Date(now).toISOString(),
+        });
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deck?.id]);
 
   const handleShuffle = () => {
     const arr = cards.map((_, i) => i);
@@ -45,6 +66,7 @@ const StudyPage = () => {
   const handleDifficulty = (difficulty: "easy" | "medium" | "hard") => {
     if (deck && card) {
       updateCardDifficulty(deck.id, card.id, difficulty);
+      reviewedRef.current.add(card.id);
     }
     next();
   };
