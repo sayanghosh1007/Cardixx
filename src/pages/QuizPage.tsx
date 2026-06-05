@@ -121,6 +121,16 @@ const QuizPage = () => {
     if (current < questions.length - 1) {
       setCurrent(current + 1);
     } else {
+      const finalScore = newAnswers.filter((a, i) => a === questions[i].correct).length;
+      if (deck) {
+        logQuizResult({
+          deckId: deck.id,
+          deckName: deck.name,
+          total: questions.length,
+          correct: finalScore,
+          takenAt: new Date().toISOString(),
+        });
+      }
       setShowResults(true);
     }
   };
