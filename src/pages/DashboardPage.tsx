@@ -54,7 +54,7 @@ const DashboardPage = () => {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {stats.map((s) => (
+          {statCards.map((s) => (
             <div key={s.label} className="glass-card-hover p-5">
               <div className="flex items-center gap-2 mb-3">
                 <s.icon size={16} className="text-primary" />
