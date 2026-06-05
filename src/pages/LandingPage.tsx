@@ -65,13 +65,13 @@ const LandingPage = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="xl" asChild>
-                <Link to="/auth?mode=signup">
+                <Link to="/dashboard">
                   Get Started Free
                   <ArrowRight size={20} />
                 </Link>
               </Button>
               <Button variant="outline" size="xl" asChild>
-                <Link to="/auth">Sign In</Link>
+                <Link to="/dashboard">Open App</Link>
               </Button>
             </div>
           </div>
