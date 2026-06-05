@@ -67,15 +67,6 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             </Link>
           ))}
         </nav>
-        <div className="absolute bottom-0 left-0 right-0 p-3 border-t border-glass-border">
-          <button
-            onClick={() => navigate("/")}
-            className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-muted hover:text-foreground w-full transition-colors"
-          >
-            <LogOut size={18} />
-            Log Out
-          </button>
-        </div>
       </aside>
 
       {/* Overlay */}
