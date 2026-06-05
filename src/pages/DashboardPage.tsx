@@ -11,18 +11,18 @@ import {
   Target,
   ArrowRight,
 } from "lucide-react";
-import { getDecks } from "@/lib/deckStore";
+import { getDecks, getStats, formatDuration } from "@/lib/deckStore";
 
 const DashboardPage = () => {
   const decks = getDecks();
-  const totalCards = decks.reduce((s, d) => s + d.cards.length, 0);
-  const avgMastery = decks.length > 0 ? Math.round(decks.reduce((s, d) => s + d.mastery, 0) / decks.length) : 0;
+  const stats = getStats();
+  const weekMs = stats.week.reduce((s, d) => s + d.ms, 0);
 
-  const stats = [
-    { label: "Total Cards", value: String(totalCards), icon: BookOpen, change: `${decks.length} decks` },
-    { label: "Avg Mastery", value: `${avgMastery}%`, icon: Brain, change: "Across all decks" },
-    { label: "Study Streak", value: "0 days", icon: Flame, change: "Start studying!" },
-    { label: "Study Time", value: "0h", icon: Clock, change: "This week" },
+  const statCards = [
+    { label: "Total Cards", value: String(stats.totalCards), icon: BookOpen, change: `${stats.totalDecks} decks` },
+    { label: "Avg Mastery", value: `${stats.avgMastery}%`, icon: Brain, change: "Across all decks" },
+    { label: "Study Streak", value: `${stats.streak} day${stats.streak === 1 ? "" : "s"}`, icon: Flame, change: stats.streak === 0 ? "Start studying!" : "Keep it up!" },
+    { label: "Study Time", value: formatDuration(weekMs), icon: Clock, change: "This week" },
   ];
 
   const quickActions = [
