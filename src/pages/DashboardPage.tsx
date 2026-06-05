@@ -76,7 +76,7 @@ const DashboardPage = () => {
               <p className="text-sm text-muted-foreground">
                 {decks.length === 0
                   ? "Get started by generating your first flashcard deck! Choose a topic or paste your notes."
-                  : `You have ${totalCards} cards across ${decks.length} decks. ${avgMastery < 50 ? "Focus on reviewing your existing cards to improve mastery." : "Great progress! Keep reviewing to maintain your knowledge."}`}
+                  : `You have ${stats.totalCards} cards across ${stats.totalDecks} decks. ${stats.avgMastery < 50 ? "Focus on reviewing your existing cards to improve mastery." : "Great progress! Keep reviewing to maintain your knowledge."}`}
               </p>
             </div>
             <Button variant="neon" size="sm" asChild>
