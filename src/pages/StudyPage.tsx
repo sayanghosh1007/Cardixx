@@ -1,10 +1,9 @@
-import { useState, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSearchParams, Link } from "react-router-dom";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, RotateCcw, Shuffle, ThumbsDown, Minus, ThumbsUp, BookOpen } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { getDeck, getDecks, updateCardDifficulty } from "@/lib/deckStore";
+import { getDeck, getDecks, updateCardDifficulty, logSession } from "@/lib/deckStore";
 
 const StudyPage = () => {
   const [searchParams] = useSearchParams();
