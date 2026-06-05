@@ -4,7 +4,7 @@ import DashboardLayout from "@/components/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Brain, CheckCircle2, XCircle, ArrowRight, Clock, BookOpen, ChevronRight } from "lucide-react";
-import { getDeck, getDecks, type Flashcard } from "@/lib/deckStore";
+import { getDeck, getDecks, logQuizResult, type Flashcard } from "@/lib/deckStore";
 
 function generateQuizQuestions(cards: Flashcard[]) {
   return cards.slice(0, 10).map((card) => {
