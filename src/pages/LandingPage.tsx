@@ -159,7 +159,7 @@ const LandingPage = () => {
               Join thousands of students and professionals who are learning smarter with HEXON.
             </p>
             <Button variant="hero" size="xl" asChild>
-              <Link to="/auth?mode=signup">
+              <Link to="/dashboard">
                 Start Learning Now
                 <ArrowRight size={20} />
               </Link>
