@@ -1,12 +1,10 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import HexonLogo from "@/components/HexonLogo";
 import {
   LayoutDashboard,
   Brain,
   BookOpen,
-  
   User,
-  LogOut,
   Sparkles,
   Library,
   Target,
