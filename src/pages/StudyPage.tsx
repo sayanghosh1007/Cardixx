@@ -20,6 +20,28 @@ const StudyPage = () => {
   const indices = shuffledIndices || cards.map((_, i) => i);
   const card = cards[indices[currentIndex]];
 
+  const startRef = useRef<number>(Date.now());
+  const reviewedRef = useRef<Set<string>>(new Set());
+
+  useEffect(() => {
+    startRef.current = Date.now();
+    reviewedRef.current = new Set();
+    return () => {
+      if (deck && reviewedRef.current.size > 0) {
+        const now = Date.now();
+        logSession({
+          deckId: deck.id,
+          deckName: deck.name,
+          cardsReviewed: reviewedRef.current.size,
+          durationMs: now - startRef.current,
+          startedAt: new Date(startRef.current).toISOString(),
+          endedAt: new Date(now).toISOString(),
+        });
+      }
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deck?.id]);
+
   const handleShuffle = () => {
     const arr = cards.map((_, i) => i);
     for (let i = arr.length - 1; i > 0; i--) {
