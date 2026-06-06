@@ -7,7 +7,17 @@ import CardixLogo from "@/components/CardixLogo";
 import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
 
 const AuthPage = () => {
-...
+  const [searchParams] = useSearchParams();
+  const [isSignUp, setIsSignUp] = useState(searchParams.get("mode") === "signup");
+  const [showPassword, setShowPassword] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+      </div>
+
       <div className="relative w-full max-w-md">
         <div className="text-center mb-8">
           <Link to="/" className="inline-block">
