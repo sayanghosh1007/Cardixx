@@ -11,7 +11,24 @@ import {
   Menu,
   X,
 } from "lucide-react";
-...
+import { cn } from "@/lib/utils";
+import { useState } from "react";
+
+const navItems = [
+  { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
+  { icon: Sparkles, label: "Generate", path: "/generate" },
+  { icon: Library, label: "My Decks", path: "/decks" },
+  { icon: BookOpen, label: "Study", path: "/study" },
+  { icon: Brain, label: "Quiz", path: "/quiz" },
+  { icon: Target, label: "Planner", path: "/planner" },
+  
+  { icon: User, label: "Profile", path: "/profile" },
+];
+
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  const location = useLocation();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="flex min-h-screen bg-background">
       {/* Mobile header */}
@@ -32,6 +49,40 @@ import {
         <div className="flex h-16 items-center px-6 border-b border-glass-border">
           <CardixLogo size="sm" />
         </div>
+        <nav className="flex flex-col gap-1 p-3 mt-2">
+          {navItems.map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              onClick={() => setSidebarOpen(false)}
+              className={cn(
+                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200",
+                location.pathname === item.path
+                  ? "bg-primary/10 text-primary neon-glow-blue"
+                  : "text-muted-foreground hover:bg-muted hover:text-foreground"
+              )}
+            >
+              <item.icon size={18} />
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+      </aside>
+
+      {/* Overlay */}
+      {sidebarOpen && (
+        <div className="fixed inset-0 z-30 bg-background/50 backdrop-blur-sm lg:hidden" onClick={() => setSidebarOpen(false)} />
+      )}
+
+      {/* Main */}
+      <main className="flex-1 pt-14 lg:pt-0 overflow-auto">
+        <div className="p-6 lg:p-8 max-w-7xl mx-auto">{children}</div>
+      </main>
+    </div>
+  );
+};
+
+export default DashboardLayout;
         <nav className="flex flex-col gap-1 p-3 mt-2">
           {navItems.map((item) => (
             <Link
