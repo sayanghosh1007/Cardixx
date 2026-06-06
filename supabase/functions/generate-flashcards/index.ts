@@ -4,7 +4,7 @@ Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response('ok', { headers: corsHeaders });
 
   try {
-    const { method, input, count = 10 } = await req.json();
+    const { method, input, count = 10, difficulty = "medium" } = await req.json();
     const apiKey = Deno.env.get('LOVABLE_API_KEY');
     if (!apiKey) {
       return new Response(JSON.stringify({ error: 'LOVABLE_API_KEY missing' }), {
@@ -12,20 +12,28 @@ Deno.serve(async (req) => {
       });
     }
 
+    const difficultyGuide: Record<string, string> = {
+      easy: "Beginner level. Use simple language, basic definitions, and core concepts suitable for someone new to the topic. Keep answers short and clear. Accessible to students of any stream.",
+      medium: "Intermediate level. Mix definitions with applications and examples. Assume the learner has foundational knowledge but explain key terms.",
+      hard: "Advanced level. Focus on deep reasoning, edge cases, nuanced distinctions, comparisons, and analytical questions. Expect detailed, precise answers.",
+    };
+    const diffInstruction = difficultyGuide[difficulty] || difficultyGuide.medium;
+
     let userPrompt = '';
     switch (method) {
       case 'topic':
-        userPrompt = `Gather accurate knowledge and create ${count} high-quality study flashcards about the topic: "${input}". Cover key definitions, principles, examples, and common pitfalls.`;
+        userPrompt = `Gather accurate knowledge and create ${count} ${difficulty}-difficulty study flashcards about the topic: "${input}". ${diffInstruction} Cover key definitions, principles, examples, and common pitfalls appropriate for this level. Make sure the content is usable by students of any academic stream.`;
         break;
       case 'notes':
-        userPrompt = `Create ${count} flashcards from these notes. Extract the most important facts and concepts:\n\n${input}`;
+        userPrompt = `Create ${count} ${difficulty}-difficulty flashcards from these notes. ${diffInstruction} Extract the most important facts and concepts:\n\n${input}`;
         break;
       case 'url':
-        userPrompt = `Create ${count} flashcards summarizing the likely content at this URL based on its domain and path: ${input}. Use your knowledge of the source if known.`;
+        userPrompt = `Create ${count} ${difficulty}-difficulty flashcards summarizing the likely content at this URL based on its domain and path: ${input}. ${diffInstruction} Use your knowledge of the source if known.`;
         break;
       default:
-        userPrompt = `Create ${count} general study flashcards about: ${input}`;
+        userPrompt = `Create ${count} ${difficulty}-difficulty general study flashcards about: ${input}. ${diffInstruction}`;
     }
+
 
     const res = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
