@@ -158,10 +158,11 @@ const LandingPage = () => {
             </p>
             <Button variant="hero" size="xl" asChild>
               <Link to="/dashboard">
-                Start Learning Now
+                Open App
                 <ArrowRight size={20} />
               </Link>
             </Button>
+
           </div>
         </div>
       </section>
