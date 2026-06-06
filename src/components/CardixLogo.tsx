@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import cardixLogo from "@/assets/cardix-logo.png.asset.json";
 
 interface CardixLogoProps {
   className?: string;
@@ -12,40 +13,21 @@ const sizeMap = {
   xl: "text-6xl",
 };
 
+const iconSizeMap = {
+  sm: "w-7 h-7",
+  md: "w-9 h-9",
+  lg: "w-12 h-12",
+  xl: "w-16 h-16",
+};
+
 const CardixLogo = ({ className, size = "md" }: CardixLogoProps) => {
   return (
     <div className={cn("flex items-center gap-2", className)}>
-      <div className="relative">
-        <svg
-          viewBox="0 0 40 40"
-          className={cn(
-            "fill-none",
-            size === "sm" && "w-7 h-7",
-            size === "md" && "w-9 h-9",
-            size === "lg" && "w-12 h-12",
-            size === "xl" && "w-16 h-16"
-          )}
-        >
-          <defs>
-            <linearGradient id="hexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="hsl(217, 91%, 60%)" />
-              <stop offset="50%" stopColor="hsl(270, 70%, 55%)" />
-              <stop offset="100%" stopColor="hsl(185, 80%, 50%)" />
-            </linearGradient>
-          </defs>
-          <path
-            d="M20 2 L36 11 L36 29 L20 38 L4 29 L4 11 Z"
-            stroke="url(#hexGrad)"
-            strokeWidth="2.5"
-            fill="none"
-          />
-          <path
-            d="M20 8 L30 14 L30 26 L20 32 L10 26 L10 14 Z"
-            fill="url(#hexGrad)"
-            opacity="0.15"
-          />
-        </svg>
-      </div>
+      <img
+        src={cardixLogo.url}
+        alt="CARDIX logo"
+        className={cn("rounded-xl object-contain", iconSizeMap[size])}
+      />
       <span
         className={cn(
           "font-display font-bold tracking-wider gradient-text",
