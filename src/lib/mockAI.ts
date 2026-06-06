@@ -8,11 +8,12 @@ interface GeneratedCard {
 
 export async function generateFlashcards(
   method: string,
-  input: string
+  input: string,
+  difficulty: "easy" | "medium" | "hard" = "medium"
 ): Promise<GeneratedCard[]> {
   const effectiveInput = input?.trim() || "general knowledge";
   const { data, error } = await supabase.functions.invoke("generate-flashcards", {
-    body: { method, input: effectiveInput, count: 10 },
+    body: { method, input: effectiveInput, count: 10, difficulty },
   });
   if (error) throw error;
   if (!data?.cards || !Array.isArray(data.cards) || data.cards.length === 0) {
@@ -20,3 +21,4 @@ export async function generateFlashcards(
   }
   return data.cards as GeneratedCard[];
 }
+

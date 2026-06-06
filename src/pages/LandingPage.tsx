@@ -66,14 +66,12 @@ const LandingPage = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="hero" size="xl" asChild>
                 <Link to="/dashboard">
-                  Get Started Free
+                  Open App
                   <ArrowRight size={20} />
                 </Link>
               </Button>
-              <Button variant="outline" size="xl" asChild>
-                <Link to="/dashboard">Open App</Link>
-              </Button>
             </div>
+
           </div>
 
           {/* Input methods */}
@@ -160,10 +158,11 @@ const LandingPage = () => {
             </p>
             <Button variant="hero" size="xl" asChild>
               <Link to="/dashboard">
-                Start Learning Now
+                Open App
                 <ArrowRight size={20} />
               </Link>
             </Button>
+
           </div>
         </div>
       </section>
