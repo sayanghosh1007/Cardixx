@@ -42,7 +42,9 @@ const GeneratePage = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [activeMethod, setActiveMethod] = useState<InputMethod>("topic");
+  const [difficulty, setDifficulty] = useState<"easy" | "medium" | "hard">("medium");
   const [step, setStep] = useState<Step>("input");
+
 
   // Input states
   const [topicInput, setTopicInput] = useState("");
