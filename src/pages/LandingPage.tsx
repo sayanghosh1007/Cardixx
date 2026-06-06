@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import HexonLogo from "@/components/HexonLogo";
+import CardixLogo from "@/components/CardixLogo";
 import Navbar from "@/components/Navbar";
 import heroBg from "@/assets/hero-bg.jpg";
 import {
@@ -49,7 +49,7 @@ const LandingPage = () => {
         <div className="relative z-10 container text-center py-20">
           <div className="animate-fade-in">
             <div className="flex justify-center mb-8">
-              <HexonLogo size="xl" />
+              <CardixLogo size="xl" />
             </div>
             <p className="text-lg md:text-xl text-muted-foreground mb-4 font-medium tracking-wide">
               Train Your Brain Smarter.
@@ -98,7 +98,7 @@ const LandingPage = () => {
               Everything You Need to <span className="gradient-text">Learn Faster</span>
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              HEXON combines AI intelligence with proven learning science to help you master any subject.
+              CARDIX combines AI intelligence with proven learning science to help you master any subject.
             </p>
           </div>
 
@@ -154,7 +154,7 @@ const LandingPage = () => {
               Ready to <span className="gradient-text">Train Your Brain?</span>
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-              Join thousands of students and professionals who are learning smarter with HEXON.
+              Join thousands of students and professionals who are learning smarter with CARDIX.
             </p>
             <Button variant="hero" size="xl" asChild>
               <Link to="/dashboard">
@@ -170,9 +170,9 @@ const LandingPage = () => {
       {/* Footer */}
       <footer className="border-t border-glass-border py-8">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
-          <HexonLogo size="sm" />
+          <CardixLogo size="sm" />
           <p className="text-sm text-muted-foreground">
-            © 2026 HEXON. Train Your Brain Smarter.
+            © 2026 CARDIX. Train Your Brain Smarter.
           </p>
         </div>
       </footer>

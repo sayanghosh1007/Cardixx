@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import HexonLogo from "@/components/HexonLogo";
+import CardixLogo from "@/components/CardixLogo";
 import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
 
 const AuthPage = () => {
@@ -21,7 +21,7 @@ const AuthPage = () => {
       <div className="relative w-full max-w-md">
         <div className="text-center mb-8">
           <Link to="/" className="inline-block">
-            <HexonLogo size="lg" />
+            <CardixLogo size="lg" />
           </Link>
           <p className="text-muted-foreground mt-2 text-sm">
             {isSignUp ? "Create your account" : "Welcome back"}

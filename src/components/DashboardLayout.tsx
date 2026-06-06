@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import HexonLogo from "@/components/HexonLogo";
+import CardixLogo from "@/components/CardixLogo";
 import {
   LayoutDashboard,
   Brain,
@@ -33,7 +33,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="flex min-h-screen bg-background">
       {/* Mobile header */}
       <div className="fixed top-0 left-0 right-0 z-50 flex h-14 items-center justify-between border-b border-glass-border bg-background/90 backdrop-blur-xl px-4 lg:hidden">
-        <HexonLogo size="sm" />
+        <CardixLogo size="sm" />
         <button onClick={() => setSidebarOpen(!sidebarOpen)} className="text-muted-foreground">
           {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -47,7 +47,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         )}
       >
         <div className="flex h-16 items-center px-6 border-b border-glass-border">
-          <HexonLogo size="sm" />
+          <CardixLogo size="sm" />
         </div>
         <nav className="flex flex-col gap-1 p-3 mt-2">
           {navItems.map((item) => (

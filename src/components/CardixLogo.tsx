@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-interface HexonLogoProps {
+interface CardixLogoProps {
   className?: string;
   size?: "sm" | "md" | "lg" | "xl";
 }
@@ -12,7 +12,7 @@ const sizeMap = {
   xl: "text-6xl",
 };
 
-const HexonLogo = ({ className, size = "md" }: HexonLogoProps) => {
+const CardixLogo = ({ className, size = "md" }: CardixLogoProps) => {
   return (
     <div className={cn("flex items-center gap-2", className)}>
       <div className="relative">
@@ -52,10 +52,10 @@ const HexonLogo = ({ className, size = "md" }: HexonLogoProps) => {
           sizeMap[size]
         )}
       >
-        HEXON
+        CARDIX
       </span>
     </div>
   );
 };
 
-export default HexonLogo;
+export default CardixLogo;
