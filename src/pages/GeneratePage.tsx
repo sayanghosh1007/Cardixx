@@ -354,6 +354,34 @@ const GeneratePage = () => {
             </div>
           )}
 
+          {activeMethod !== "manual" && (
+            <div className="mt-6 space-y-2">
+              <Label>Difficulty Level</Label>
+              <div className="grid grid-cols-3 gap-2">
+                {(["easy", "medium", "hard"] as const).map((d) => (
+                  <button
+                    key={d}
+                    type="button"
+                    onClick={() => setDifficulty(d)}
+                    className={cn(
+                      "glass-card px-3 py-2 text-sm font-medium capitalize transition-all",
+                      difficulty === d
+                        ? "border-primary/50 neon-glow-blue text-primary"
+                        : "text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    {d}
+                  </button>
+                ))}
+              </div>
+              <p className="text-xs text-muted-foreground">
+                {difficulty === "easy" && "Beginner-friendly: simple definitions and core ideas."}
+                {difficulty === "medium" && "Balanced: concepts, applications, and examples."}
+                {difficulty === "hard" && "Advanced: deep reasoning, edge cases, and analysis."}
+              </p>
+            </div>
+          )}
+
           {activeMethod !== "document" && activeMethod !== "image" && (
             <div className="mt-6">
               <Button variant="hero" size="lg" onClick={handleGenerate} disabled={!canGenerate()}>
@@ -363,6 +391,7 @@ const GeneratePage = () => {
               </Button>
             </div>
           )}
+
         </div>
       </div>
     </DashboardLayout>
