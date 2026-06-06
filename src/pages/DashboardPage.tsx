@@ -38,7 +38,7 @@ const DashboardPage = () => {
     <DashboardLayout>
       <div className="space-y-8">
         <div>
-          <h1 className="text-2xl md:text-3xl font-display font-bold mb-1">Welcome back! 👋</h1>
+          <h1 className="text-2xl md:text-3xl font-display font-bold mb-1">Heyy Welcome !! 👋</h1>
           <p className="text-muted-foreground">Here's your learning overview.</p>
         </div>
 
