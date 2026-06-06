@@ -90,7 +90,7 @@ const GeneratePage = () => {
     setDeckName(name);
 
     try {
-      const cards = await generateFlashcards(activeMethod, input);
+      const cards = await generateFlashcards(activeMethod, input, difficulty);
       setGeneratedCards(cards);
       setStep("preview");
     } catch {
