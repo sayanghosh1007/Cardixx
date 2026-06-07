@@ -23,7 +23,7 @@ const features = [
   { icon: BookOpen, title: "AI Quiz Generator", desc: "Auto-generate quizzes in multiple formats from any content.", color: "neon-cyan" },
   { icon: Target, title: "AI Study Planner", desc: "Personalized study plans based on your progress and weak areas.", color: "neon-blue" },
   { icon: BarChart3, title: "Progress Analytics", desc: "Track your learning with detailed stats and weekly reports.", color: "neon-purple" },
-  { icon: Trophy, title: "Streaks & Leaderboard", desc: "Stay motivated with study streaks and compete with peers.", color: "neon-cyan" },
+  { icon: Trophy, title: "Study History", desc: "Track your past sessions, review completed topics, and monitor your learning journey.", color: "neon-cyan" },
 ];
 
 const inputMethods = [
