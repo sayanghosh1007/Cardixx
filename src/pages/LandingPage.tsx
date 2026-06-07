@@ -63,6 +63,14 @@ const LandingPage = () => {
               Generate intelligent flashcards and quizzes from any content.
               Master any subject with spaced repetition and AI-driven study plans.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="hero" size="xl" asChild>
+                <Link to="/dashboard">
+                  Open App
+                  <ArrowRight size={20} />
+                </Link>
+              </Button>
+            </div>
 
           </div>
 
