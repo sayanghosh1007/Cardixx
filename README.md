@@ -1,4 +1,4 @@
-Project: Hexon AI Flashcard Generator
+Project: Cardix - AI Flashcard Generator
 
 Developed by: Sayan Ghosh
 
