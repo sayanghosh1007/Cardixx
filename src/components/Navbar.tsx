@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import CardixLogo from "@/components/CardixLogo";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
