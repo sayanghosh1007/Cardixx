@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import CardixLogo from "@/components/CardixLogo";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -23,11 +22,6 @@ const Navbar = () => {
               <a href="#how-it-works" className="text-sm text-muted-foreground hover:text-foreground transition-colors">How It Works</a>
             </div>
 
-            <div className="hidden md:flex items-center gap-3">
-              <Button variant="hero" size="sm" asChild>
-                <Link to="/dashboard">Open App</Link>
-              </Button>
-            </div>
 
             <button
               className="md:hidden text-muted-foreground"
@@ -41,9 +35,6 @@ const Navbar = () => {
                 <div className="flex flex-col gap-3">
                   <a href="#features" className="text-sm text-muted-foreground py-2">Features</a>
                   <a href="#how-it-works" className="text-sm text-muted-foreground py-2">How It Works</a>
-                  <Button variant="hero" size="sm" asChild>
-                    <Link to="/dashboard">Open App</Link>
-                  </Button>
                 </div>
               </div>
             )}
